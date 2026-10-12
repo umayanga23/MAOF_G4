@@ -1,0 +1,9 @@
+[package]
+name = "storage"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+domain = { path = "../domain" }
+serde_json.workspace = true
+fs2 = "0.4"

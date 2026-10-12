@@ -1,0 +1,10 @@
+[package]
+name = "tools"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+domain = { path = "../domain" }
+cap-std = "4"
+sha2 = "0.10"
+uuid.workspace = true

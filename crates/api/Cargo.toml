@@ -1,0 +1,17 @@
+[package]
+name = "api"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+domain = { path = "../domain" }
+orchestrator = { path = "../orchestrator" }
+llm = { path = "../llm" }
+storage = { path = "../storage" }
+observability = { path = "../observability" }
+tools = { path = "../tools" }
+memory = { path = "../memory" }
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+uuid.workspace = true

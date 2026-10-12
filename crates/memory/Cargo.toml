@@ -1,0 +1,8 @@
+[package]
+name = "memory"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+domain = { path = "../domain" }
+uuid.workspace = true

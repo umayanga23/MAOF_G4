@@ -1,0 +1,29 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/domain",
+    "crates/orchestrator",
+    "crates/api",
+    "crates/llm",
+    "crates/tools",
+    "crates/memory",
+    "crates/storage",
+    "crates/observability",
+    "apps/desktop/src-tauri",
+]
+default-members = ["crates/domain", "crates/orchestrator", "crates/api", "crates/llm", "crates/tools", "crates/memory", "crates/storage", "crates/observability"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+
+# Every crate below pulls its version from here with `xxx.workspace = true`.
+# Bump a version once, in one place, and every crate picks it up.
+[workspace.dependencies]
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+uuid = { version = "1", features = ["v4", "serde"] }
+async-trait = "0.1"
+thiserror = "1"
+tracing = "0.1"

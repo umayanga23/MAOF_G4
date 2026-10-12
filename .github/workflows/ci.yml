@@ -1,0 +1,31 @@
+name: Research prototype checks
+on:
+  push:
+  pull_request:
+jobs:
+  verify:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/desktop/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python doc/tools/check_project_docs.py
+      - run: python scripts/check_publish.py
+      - run: cargo fmt --all -- --check
+      - run: cargo test --workspace --locked
+      - run: cargo build -p api --example ui_bridge --locked
+      - run: npm ci
+        working-directory: apps/desktop
+      - run: npm run build
+        working-directory: apps/desktop
+      - run: npm run test:ui
+        working-directory: apps/desktop

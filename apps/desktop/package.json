@@ -1,0 +1,28 @@
+{
+  "name": "orchestration-lab-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "tauri": "tauri",
+    "test:ui": "playwright test",
+    "test:native": "node tests/native-smoke.mjs",
+    "test:external-native": "node tests/native-external.mjs",
+    "test:remote-native": "node tests/native-remote.mjs",
+    "test:discovery-native": "node tests/native-discovery.mjs",
+    "test:assignment-native": "node tests/native-assignment.mjs",
+    "test:runtime-native": "node tests/native-runtime.mjs"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2",
+    "vite": "^7",
+    "typescript": "~5.9.3",
+    "@playwright/test": "^1.56.0"
+  }
+}

@@ -1,0 +1,8 @@
+[package]
+name = "observability"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+domain = { path = "../domain" }
+sysinfo = "0.33"
