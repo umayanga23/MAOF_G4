@@ -19,7 +19,7 @@ test('real Rust workflow: edit, launch, pause, approve, export and compare',asyn
     await page.exposeFunction('rustInvoke',rpc);
     await page.addInitScript(()=>{const w=window as any;w.isTauri=true;w.__TAURI_INTERNALS__={invoke:(cmd:string,args:any)=>w.rustInvoke(cmd,args)};});
     await page.goto('/');
-    await expect(page.getByRole('heading',{name:'Give your agents a place to work.'})).toBeVisible();
+    await page.getByRole('button',{name:'Continue offline'}).click();await page.locator('nav [data-nav="overview"]').click();await expect(page.getByRole('heading',{name:'Give your agents a place to work.'})).toBeVisible();
     mkdirSync(resolve(root,'doc/screenshots'),{recursive:true});
     await page.screenshot({path:resolve(root,'doc/screenshots/desktop-overview.png'),fullPage:true});
     await page.locator('nav [data-nav="agents"]').click();
@@ -29,7 +29,7 @@ test('real Rust workflow: edit, launch, pause, approve, export and compare',asyn
     await expect(page.getByRole('dialog')).not.toBeVisible();
     expect((await rpc('snapshot')).workspace.agents[0].priority).toBe(2);
     await page.locator('nav [data-nav="workflows"]').click();
-    await page.locator('[data-edit-workflow="research-brief"]').click();
+    await page.locator('[data-workflow-card="research-brief"]').click();await page.locator('[data-edit-workflow="research-brief"]').click();
     await page.locator('[name="deps-0"]').fill('report');
     await page.getByRole('button',{name:'Save workflow',exact:true}).click();
     await expect(page.getByRole('status')).toContainText('Circular wait');
@@ -65,7 +65,7 @@ test('real Rust workflow: edit, launch, pause, approve, export and compare',asyn
     await page.getByRole('button',{name:'Save agent',exact:true}).click();
     await expect(page.getByRole('dialog')).not.toBeVisible();
     await page.locator('nav [data-nav="workflows"]').click();
-    await page.locator('[data-edit-workflow="parallel-review"]').click();
+    await page.locator('[data-workflow-card="parallel-review"]').click();await page.locator('[data-edit-workflow="parallel-review"]').click();
     await page.locator('[name="document-0"]').selectOption(document.id);
     await page.getByRole('button',{name:'Save workflow',exact:true}).click();
     await expect(page.getByRole('dialog')).not.toBeVisible();

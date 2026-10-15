@@ -53,7 +53,7 @@ async function startDesktop(){
  if(!browser)throw new Error(`No native debugger: ${diagnostics}`);
  for(let i=0;i<30;i++){page=browser.contexts().flatMap(c=>c.pages()).find(p=>p.url().includes('tauri'));if(page)break;await sleep(300);}
  if(!page)throw new Error('No native webview');
- await page.getByRole('heading',{name:'Give your agents a place to work.'}).waitFor({timeout:20000});
+ await page.getByRole('button',{name:'Continue offline'}).click({timeout:20000});await page.locator('nav [data-nav="overview"]').click();await page.getByRole('heading',{name:'Give your agents a place to work.'}).waitFor({timeout:20000});
 }
 async function stopTestDesktop(){
  await browser?.close();browser=undefined;page=undefined;

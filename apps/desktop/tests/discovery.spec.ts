@@ -34,7 +34,7 @@ test('Agent Card review, explicit registration, safe defaults and actual A2A exe
  try{
   await page.exposeFunction('rustInvoke',rpc);
   await page.addInitScript(()=>{const w=window as any;w.isTauri=true;w.__TAURI_INTERNALS__={invoke:(cmd:string,args:any)=>w.rustInvoke(cmd,args)};});
-  await page.goto('/');await expect(page.getByRole('heading',{name:'Give your agents a place to work.'})).toBeVisible();
+  await page.goto('/');await page.getByRole('button',{name:'Continue offline'}).click();await page.locator('nav [data-nav="overview"]').click();await expect(page.getByRole('heading',{name:'Give your agents a place to work.'})).toBeVisible();
   const initial=await rpc('snapshot');
   await page.locator('nav [data-nav="agents"]').click();await page.getByRole('button',{name:'Discover agent',exact:true}).click();
   await page.getByLabel('Agent Card URL',{exact:true}).fill(`${cardBase}/bad`);

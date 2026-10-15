@@ -1,0 +1,52 @@
+/* App shell (Figma: 05-Workflow frames — Sidebar, Top bar, Status strip). */
+.mx-shell{display:flex;height:100vh;background:var(--bg-app);color:var(--text-primary);font-family:var(--font-sans);font-size:14px;line-height:20px;-webkit-font-smoothing:antialiased}
+:where(.mx-shell) *{box-sizing:border-box}
+:where(.mx-shell) :is(button,input,select,textarea){font:inherit;color:inherit}
+:where(.mx-shell) :is(h1,h2,h3,p){margin:0}
+
+/* Sidebar */
+.mx-sidebar{flex:0 0 240px;display:flex;flex-direction:column;gap:2px;padding:16px;background:var(--bg-sidebar);overflow-y:auto}
+.mx-logo{display:flex;align-items:center;gap:12px;padding:8px;font-size:15px;line-height:21px;font-weight:600;color:var(--text-on-brand)}
+.mx-logo-mark{width:28px;height:28px;border-radius:8px;background:var(--brand-primary)}
+.mx-nav{display:flex;flex-direction:column;gap:2px}
+.mx-nav-item{display:flex;align-items:center;gap:12px;width:100%;min-height:36px;padding:8px 12px;border:0;border-radius:6px;background:none;color:var(--text-sidebar);text-align:left;cursor:pointer}
+.mx-nav-item > span:first-of-type{flex:1 1 auto}
+.mx-nav-item:hover{background:rgba(255,255,255,.06);color:var(--text-on-brand)}
+.mx-nav-item[aria-current="page"]{background:var(--brand-primary);color:var(--text-on-brand)}
+.mx-nav-item:focus-visible{outline:2px solid var(--text-on-brand);outline-offset:-2px}
+.mx-nav-home,.mx-nav-badge{display:inline-flex;align-items:center;height:18px;padding:0 6px;border-radius:9px;font-size:11px;line-height:14px}
+.mx-nav-home{display:none;background:var(--text-on-brand);color:var(--brand-primary)}
+.mx-nav-item[aria-current="page"] .mx-nav-home{display:inline-flex}
+.mx-nav-badge{background:var(--brand-primary);color:var(--text-on-brand)}
+.mx-nav-item[aria-current="page"] .mx-nav-badge{background:var(--text-on-brand);color:var(--brand-primary)}
+.mx-sidebar-bottom{margin-top:auto;display:flex;flex-direction:column;gap:2px}
+.mx-version{padding:8px 12px;font-size:12px;line-height:16px;color:var(--text-sidebar)}
+
+/* Main column */
+.mx-main{flex:1 1 0;min-width:0;display:flex;flex-direction:column}
+.mx-topbar{flex:none;display:flex;align-items:center;gap:16px;height:56px;padding:0 24px;background:var(--bg-surface);border-bottom:1px solid var(--border-default)}
+.mx-crumb-root,.mx-crumb-sep{color:var(--text-secondary)}
+.mx-crumb{font-weight:500;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mx-search{margin-left:auto;display:flex;align-items:center;gap:8px;width:320px;height:36px;padding:0 12px;border:1px solid var(--border-default);border-radius:var(--radius-input);background:var(--bg-app);color:var(--text-secondary)}
+.mx-search:focus-within{border-color:var(--brand-primary)}
+.mx-search input{flex:1 1 0;min-width:0;border:0;background:none;outline:none;padding:0;color:var(--text-primary)}
+.mx-search input::placeholder{color:var(--text-secondary)}
+.mx-search kbd{font:inherit;font-size:12px;line-height:16px}
+.mx-icon-btn{display:inline-flex;align-items:center;justify-content:center;padding:4px;border:0;border-radius:6px;background:none;color:var(--text-secondary);cursor:pointer}
+.mx-icon-btn:hover{background:var(--bg-hover);color:var(--text-primary)}
+.mx-avatar{display:flex;align-items:center;justify-content:center;flex:none;width:32px;height:32px;border-radius:8px;background:var(--brand-primary);color:var(--text-on-brand);font-size:11px;line-height:14px;font-weight:600}
+.mx-content{flex:1 1 0;min-height:0;overflow:auto;position:relative}
+.mx-status{flex:none;display:flex;align-items:center;gap:16px;height:24px;padding:0 16px;background:var(--bg-surface);border-top:1px solid var(--border-default);font-size:12px;line-height:16px;color:var(--text-secondary)}
+.mx-status-dot{width:8px;height:8px;border-radius:4px;background:var(--status-running)}
+.mx-status-dot.off{background:var(--status-disabled)}
+.mx-status-sync{margin-left:auto}
+
+/* Classic pages hosted inside the shell; the shell provides navigation, crumb and status. */
+.legacy-host .app-body{margin-left:0;min-height:100%}
+.legacy-host .app-body > header,.legacy-host .app-body > footer{display:none}
+.legacy-host[data-hidden="true"] .app-body{display:none}
+
+.mx-toast{position:fixed;right:24px;bottom:40px;z-index:20;max-width:560px;padding:12px 16px;border-radius:var(--radius-card);background:var(--bg-sidebar);color:var(--text-on-brand);font:12px/18px var(--font-sans);box-shadow:0 6px 30px rgba(0,0,0,.2);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .2s,transform .2s;overflow-wrap:anywhere}
+.mx-toast.visible{opacity:1;transform:none}
+.mx-toast.error{background:var(--status-failed)}
+@media (prefers-reduced-motion:reduce){.mx-toast{transition:none}}

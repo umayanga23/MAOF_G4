@@ -24,7 +24,7 @@ try{
  let page;
  for(let i=0;i<30;i++){page=browser.contexts().flatMap(c=>c.pages()).find(p=>p.url().includes('tauri'));if(page)break;await new Promise(r=>setTimeout(r,300));}
  if(!page)throw new Error('No native webview');
- await page.getByRole('heading',{name:'Give your agents a place to work.'}).waitFor({timeout:20000});
+ await page.getByRole('button',{name:'Continue offline'}).click({timeout:20000});await page.locator('nav [data-nav="overview"]').click();await page.getByRole('heading',{name:'Give your agents a place to work.'}).waitFor({timeout:20000});
  const rpc=(cmd,args={})=>page.evaluate(({cmd,args})=>window.__TAURI_INTERNALS__.invoke(cmd,args),{cmd,args});
  const command=command=>rpc('command',{command});
  await command({type:'import_document',name:'external-notes.md',text:'SAMPLE42: Orchard compares FIFO and priority aging. Synthetic source for external integration.'});

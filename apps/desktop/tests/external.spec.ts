@@ -45,7 +45,7 @@ for(const protocol of ['http_json','a2a_json_rpc'] as const){
    await page.exposeFunction('rustInvoke',rpc);
    await page.addInitScript(()=>{const w=window as any;w.isTauri=true;w.__TAURI_INTERNALS__={invoke:(cmd:string,args:any)=>w.rustInvoke(cmd,args)};});
    await page.goto('/');
-   await expect(page.getByRole('heading',{name:'Give your agents a place to work.'})).toBeVisible();
+   await page.getByRole('button',{name:'Continue offline'}).click();await page.locator('nav [data-nav="overview"]').click();await expect(page.getByRole('heading',{name:'Give your agents a place to work.'})).toBeVisible();
    await page.locator('nav [data-nav="agents"]').click();
    const identities:string[]=[];
    for(const name of ['Remote Researcher','Remote Writer']){
@@ -60,7 +60,7 @@ for(const protocol of ['http_json','a2a_json_rpc'] as const){
     identities.push((await rpc('snapshot')).workspace.agents.at(-1).id);
    }
    await page.locator('nav [data-nav="workflows"]').click();
-   await page.getByRole('button',{name:'New workflow',exact:true}).click();
+   await page.getByRole('button',{name:'Start blank',exact:true}).click();
    await page.getByLabel('Workflow name',{exact:true}).fill('External team test');
    await page.locator('[name="id-0"]').fill('research');
    await page.locator('[name="agent-0"]').selectOption(identities[0]);
