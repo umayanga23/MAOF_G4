@@ -1,2 +1,3 @@
 import { defineConfig } from 'vite';
-export default defineConfig({server:{port:1420,strictPort:true},clearScreen:false});
+import react from '@vitejs/plugin-react';
+export default defineConfig({plugins:[react()],server:{port:1420,strictPort:true},clearScreen:false});

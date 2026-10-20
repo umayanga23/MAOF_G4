@@ -3,14 +3,14 @@ import {readFileSync} from 'node:fs';
 
 // The same user workflow runs against the Rust bridge and the actual Tauri app.
 export async function assignmentFlow(page,invoke,screenshot){
- await expect(page.getByRole('heading',{name:'Give your agents a place to work.'})).toBeVisible();
+ await page.getByRole('button',{name:'Continue offline'}).click();await page.locator('nav [data-nav="overview"]').click();await expect(page.getByRole('heading',{name:'Give your agents a place to work.'})).toBeVisible();
  await page.locator('nav [data-nav="documents"]').click();
  await page.getByLabel('Text or Markdown file').setInputFiles({name:'assignment-note.md',mimeType:'text/markdown',buffer:Buffer.from('CAPABILITY_INPUT: compare task scheduling strategies.')});
  await page.getByRole('button',{name:'Add document',exact:true}).click();
  await expect(page.getByRole('cell',{name:'assignment-note.md',exact:false})).toBeVisible();
  const document=(await invoke('snapshot')).workspace.documents.at(-1);
  await page.locator('nav [data-nav="workflows"]').click();
- await page.getByRole('button',{name:'New workflow',exact:true}).click();
+ await page.getByRole('button',{name:'Start blank',exact:true}).click();
  await page.getByLabel('Workflow name',{exact:true}).fill('Automatic research');
  await expect(page.locator('[name="capabilities-0"]')).toBeDisabled();
  await page.locator('[name="assignment-0"]').selectOption('capabilities');

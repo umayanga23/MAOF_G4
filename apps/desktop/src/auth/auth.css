@@ -1,0 +1,76 @@
+/* Login screen (Figma: 01-Login). Scoped under .auth so it cannot leak into the workspace UI. */
+.auth{display:flex;min-height:100vh;background:var(--bg-app);font-family:var(--font-sans);color:var(--text-primary);-webkit-font-smoothing:antialiased}
+:where(.auth) *{box-sizing:border-box}
+:where(.auth) :is(p,h1,h2){margin:0}
+:where(.auth) :is(button,input){font:inherit}
+
+/* Brand panel */
+.auth-brand{position:relative;flex:0 0 min(720px,50%);display:flex;flex-direction:column;align-items:flex-start;padding:48px;background:var(--bg-sidebar);overflow:clip}
+.auth-logo{display:flex;align-items:center;gap:12px}
+.auth-logo-mark{width:32px;height:32px;border-radius:9px;background:var(--brand-primary)}
+.auth-logo-text{font-size:18px;line-height:26px;font-weight:600;color:var(--text-on-brand)}
+.auth-graph{position:absolute;left:280px;top:90px}
+.auth-tagline{margin-top:auto;max-width:420px;font-size:28px;line-height:36px;font-weight:600;color:var(--text-on-brand)}
+.auth-version{font-size:12px;line-height:16px;color:var(--text-sidebar)}
+
+/* Form panel */
+.auth-panel{flex:1 1 0;min-width:0;display:flex;align-items:center;justify-content:center;padding:32px}
+.auth-card{display:flex;flex-direction:column;gap:20px;width:420px;max-width:100%}
+.auth-title{display:flex;flex-direction:column;gap:4px}
+.auth-title h1{font-size:22px;line-height:30px;font-weight:600}
+.auth-sub{font-size:12px;line-height:16px;color:var(--text-secondary)}
+
+.auth-tabs{display:flex;border-bottom:1px solid var(--border-default)}
+.auth-tab{flex:1 1 0;padding:10px 0 9px;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;background:none;font-size:14px;line-height:20px;font-weight:500;color:var(--text-secondary);cursor:pointer}
+.auth-tab[aria-selected="true"]{border-bottom-color:var(--brand-primary);color:var(--brand-primary)}
+
+.auth-btn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;height:44px;padding:0 14px;border-radius:var(--radius-input);border:1px solid transparent;font-size:14px;line-height:20px;font-weight:500;cursor:pointer}
+.auth-btn-primary{background:var(--brand-primary);color:var(--text-on-brand)}
+.auth-btn-primary:hover{filter:brightness(1.08)}
+.auth-btn-outline{background:var(--bg-surface);border-color:var(--border-default);color:var(--text-primary)}
+.auth-btn-outline:hover,.auth-btn-ghost:hover{background:var(--bg-app);filter:brightness(.97)}
+.auth-btn-ghost{width:auto;height:36px;background:none;color:var(--text-primary)}
+.auth-btn-outline.compact{width:auto;height:36px}
+.auth-btn:focus-visible,.auth-tab:focus-visible,.auth-link:focus-visible,.auth-show:focus-visible{outline:2px solid var(--brand-primary);outline-offset:2px}
+
+.auth-divider{display:flex;align-items:center;gap:12px;font-size:12px;line-height:16px;color:var(--text-secondary)}
+.auth-divider::before,.auth-divider::after{content:'';flex:1 1 0;height:1px;background:var(--border-default)}
+
+.auth-form{display:flex;flex-direction:column;gap:14px}
+.auth-field{display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:18px;font-weight:500}
+.auth-input{display:flex;align-items:center;height:40px;padding:0 12px;border:1px solid var(--border-default);border-radius:var(--radius-input);background:var(--bg-surface)}
+.auth-input:focus-within{border-color:var(--brand-primary);box-shadow:0 0 0 1px var(--brand-primary)}
+.auth-input input{flex:1 1 0;min-width:0;height:100%;border:0;padding:0;background:none;outline:none;font-size:14px;line-height:20px;font-weight:400;color:var(--text-primary)}
+.auth-input input::placeholder{color:var(--text-secondary)}
+.auth-show{border:0;padding:0;background:none;font-size:12px;line-height:16px;font-weight:500;color:var(--text-secondary);cursor:pointer}
+
+.auth-strength{display:flex;gap:4px}
+.auth-strength span{flex:1 1 0;height:4px;border-radius:2px;background:var(--border-default)}
+.auth-strength span.on{background:var(--brand-primary)}
+.auth-hint{font-size:12px;line-height:16px;color:var(--text-secondary)}
+
+.auth-options{display:flex;align-items:center;justify-content:space-between;min-height:100px}
+.auth-check{display:flex;align-items:center;gap:8px;font-size:13px;line-height:18px;cursor:pointer}
+.auth-check input{width:16px;height:16px;margin:0;accent-color:var(--brand-primary);cursor:pointer}
+.auth-link{border:0;padding:0;background:none;font-size:13px;line-height:18px;font-weight:500;color:var(--brand-primary);cursor:pointer}
+
+/* Figma fills this banner solid red with dark text, which is unreadable; a tint keeps the same colour token. */
+.auth-error{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border:1px solid var(--status-failed);border-radius:var(--radius-card);background:color-mix(in srgb,var(--status-failed) 8%,var(--bg-surface))}
+.auth-error strong{font-size:13px;line-height:18px;font-weight:500}
+.auth-error span{font-size:12px;line-height:16px;color:var(--text-secondary)}
+
+.auth-offline{display:flex;align-items:flex-start;gap:10px;padding:12px;border:1px dashed var(--border-default);border-radius:var(--radius-card)}
+.auth-offline-pc{flex:none;width:18px;height:14px;border:1px solid var(--text-secondary);border-radius:3px}
+.auth-offline-text{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.auth-offline-text strong{font-size:13px;line-height:18px;font-weight:500}
+.auth-offline-text span{font-size:12px;line-height:16px;color:var(--text-secondary)}
+.auth-offline .auth-link{font-size:12px;line-height:16px}
+
+/* Google waiting / signed-in states */
+.auth-status{display:flex;flex-direction:column;align-items:center;gap:12px;padding:24px;text-align:center}
+.auth-status h2{font-size:18px;line-height:26px;font-weight:600}
+.auth-spinner{animation:auth-spin 1s linear infinite}
+@keyframes auth-spin{to{transform:rotate(360deg)}}
+.auth-done{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:22px;background:var(--status-running);color:var(--text-on-brand);font-size:22px;line-height:28px}
+.auth-actions{display:flex;gap:8px}
+@media (prefers-reduced-motion:reduce){.auth-spinner{animation:none}}

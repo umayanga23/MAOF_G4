@@ -1,0 +1,29 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="420" height="260.75" viewBox="0 0 420 260.75" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Node graph">
+<path id="Vector" d="M0 70.75C50 70.75 20 0.75 70 0.75" stroke="white" stroke-opacity="0.25" stroke-width="1.5"/>
+<path id="Vector_2" d="M0 0.75C50 0.75 20 70.75 70 70.75" stroke="white" stroke-opacity="0.25" stroke-width="1.5"/>
+<path id="Vector_3" d="M0 0.75C50 0.75 20 70.75 80 70.75" stroke="white" stroke-opacity="0.25" stroke-width="1.5"/>
+<path id="Vector_4" d="M0 70.75C50 70.75 20 0.75 80 0.75" stroke="white" stroke-opacity="0.25" stroke-width="1.5"/>
+<g id="node">
+<rect x="20" y="108.75" width="80" height="44" rx="10" fill="#4F46E5"/>
+</g>
+<g id="node_2">
+<rect x="150" y="38.75" width="100" height="44" rx="10" fill="white"/>
+</g>
+<g id="node_3">
+<rect x="150" y="178.75" width="100" height="44" rx="10" fill="white"/>
+</g>
+<g id="node_4">
+<rect x="310" y="108.75" width="90" height="44" rx="10" fill="white"/>
+</g>
+<g id="status">
+<rect x="233" y="55.75" width="10" height="10" rx="5" fill="#16A34A"/>
+</g>
+<g id="status_2">
+<rect x="233" y="195.75" width="10" height="10" rx="5" fill="#D97706"/>
+</g>
+<g id="status_3">
+<rect x="387" y="125.75" width="10" height="10" rx="5" fill="#0D9488"/>
+</g>
+</g>
+</svg>

@@ -1,0 +1,53 @@
+/* Design tokens from the MAOF_UI Figma file (Cover page). Names mirror the Figma variables. */
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/jetbrains-mono/400.css';
+
+:root {
+  --bg-app: #f6f7f9;
+  --bg-surface: #ffffff;
+  --bg-sidebar: #111827;
+  --bg-hover: #f3f4f6;
+  --border-default: #e5e7eb;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-on-brand: #ffffff;
+  --text-sidebar: #9ca3af;
+  --brand-primary: #4f46e5;
+  --status-running: #16a34a;
+  --status-idle: #6b7280;
+  --status-paused: #d97706;
+  --status-failed: #dc2626;
+  --status-queued: #2563eb;
+  --status-disabled: #9ca3af;
+  --status-completed: #0d9488;
+
+  --font-sans: Inter, 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', Consolas, monospace;
+  --radius-input: 6px;
+  --radius-card: 8px;
+  --radius-panel: 10px;
+  --shadow-card: 0 1px 1px rgba(0, 0, 0, 0.06);
+}
+
+/* Values from the "05-Workflow / Plan (Dark)" frame. completed/failed are not in that frame and follow the same step. */
+:root[data-theme='dark'] {
+  --bg-app: #0f1115;
+  --bg-surface: #171a21;
+  --bg-hover: #1e222b;
+  --border-default: #2a2f3a;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --brand-primary: #6366f1;
+  --status-running: #22c55e;
+  --status-idle: #9ca3af;
+  --status-paused: #f59e0b;
+  --status-failed: #ef4444;
+  --status-queued: #3b82f6;
+  --status-disabled: #4b5563;
+  --status-completed: #14b8a6;
+  color-scheme: dark;
+}
+
+body { margin: 0; }

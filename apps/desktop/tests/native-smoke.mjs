@@ -24,7 +24,7 @@ try{
   let page;
   for(let i=0;i<30;i++){page=browser.contexts().flatMap(c=>c.pages()).find(p=>p.url().includes('tauri'));if(page)break;await new Promise(r=>setTimeout(r,300));}
   if(!page)throw new Error('No Tauri webview page');
-  await page.getByRole('heading',{name:'Give your agents a place to work.'}).waitFor({timeout:20000});
+  await page.getByRole('button',{name:'Continue offline'}).click({timeout:20000});await page.locator('nav [data-nav="overview"]').click();await page.getByRole('heading',{name:'Give your agents a place to work.'}).waitFor({timeout:20000});
   await page.getByRole('button',{name:'Start workflow'}).click();
   await page.getByRole('heading',{name:'Task progress'}).waitFor({timeout:10000});
   await page.locator('nav [data-nav="approvals"]').click();
@@ -45,7 +45,7 @@ try{
   await page.getByRole('button',{name:'Save agent',exact:true}).click();
   await page.getByRole('dialog').waitFor({state:'hidden'});
   await page.locator('nav [data-nav="workflows"]').click();
-  await page.locator('[data-edit-workflow="parallel-review"]').click();
+  await page.locator('[data-workflow-card="parallel-review"]').click();await page.locator('[data-edit-workflow="parallel-review"]').click();
   await page.locator('[name="document-0"]').selectOption({label:'native-notes.md'});
   await page.getByRole('button',{name:'Save workflow',exact:true}).click();
   await page.getByRole('dialog').waitFor({state:'hidden'});
